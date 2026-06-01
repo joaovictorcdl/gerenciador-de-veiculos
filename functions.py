@@ -1,18 +1,45 @@
 veiculos = []
+multas = []
 
 def cadastrar_veiculos():
     guardando = []
     nomecarro = input('Informe o nome do veículo: ')
     placacarro = input('Insira a placa do veículo: ')
     ufcarro = str(input('Insira o UF do veículo: '))
-    guardando = [nomecarro, placacarro, ufcarro]
+    ano = int(input('Insira o ano do carro: '))
+    guardando = [nomecarro, placacarro, ufcarro, ano]
     veiculos.append(guardando)
-    print('-=' * 30)
+    pergunta_multas = str(input('Existem multas para serem cadastradas? y/n'))
+    if pergunta_multas == 'y':
+        cadastrar_multas()
+        print('Veículo cadastrado com sucesso.')
+    else:
+        print('Veículo cadastrado com sucesso.')
+
+def cadastrar_multas():
+    print('Vamos cadastrar as multas do seu veículo, por favor insira: ')
+    placa = str(input('Placa: '))
+    data = str(input('Data: '))
+    local = str(input('Local: '))
+    valor = float(input('Valor: '))
+    multas.append(placa, data, local, valor)
+
+def ver_multas(iplaca):
+    for carros in multas:
+        if iplaca == multas[0]:
+            print('Informações: ')
+            print('Placa: ', carros[0])
+            print('Data: ', carros[1])
+            print('Local: ', carros[2])
+            print('Valor: ', carros[3])
+            print('-=' * 30)
+            return
+        else:
+            print('Sem multas cadastradas.')
 
 def listarveiculos():
     print('Confira todos os veículos cadastrados: ')
     for carroscadastrados in veiculos:
-        print('-=' * 30)
         print('Nome do veiculo: ', carroscadastrados[0])
         print('Placa do veículo: ', carroscadastrados[1])
         print('UF: ', carroscadastrados[2])
@@ -34,7 +61,6 @@ def procurandoporuf():
     uf = input('Informe o UF: ')
     for carro in veiculos:
         if carro[2] == uf:
-            print('-=' * 30)
             print('Carros que constam com esse UF: ')
             print('Nome: ', carro[0])
             print('Placa: ', carro[1])
