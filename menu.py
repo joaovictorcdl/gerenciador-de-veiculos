@@ -8,7 +8,8 @@ def menu():
         print('[2] - Listar veículos')
         print('[3] - Pesquisar por placa')
         print('[4] - Listar veículos por UF')
-        print('[5] - Sair')
+        print('[5] - Consultar multas')
+        print('[6] - Sair')
         print('-=' * 30)
         opcao = int(input('Selecione uma opção: '))
         if opcao == 1:
@@ -21,6 +22,9 @@ def menu():
         elif opcao == 4:
             procurandoporuf()
         elif opcao == 5:
+            informeplaca = str(input('Por favor, informe a placa para consultar as multas: '))
+            ver_multas(informeplaca)
+        elif opcao == 6:
             break
         else:
             print('Opção não encontrada. Tente novamente.')
